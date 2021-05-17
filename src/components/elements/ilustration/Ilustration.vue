@@ -1,33 +1,35 @@
 <template>
-  <div class="login-illustration">
+  <div class="login-illustration animation">
     <img src="@/assets/img/Pizza.png" alt="illustration" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "ilustration",
+  props: {
+    type: Boolean,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.login-illustration {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-
+.animation {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+.login-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+
   & > img {
     max-width: auto;
     max-height: 500px;

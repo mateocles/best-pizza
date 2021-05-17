@@ -1,29 +1,33 @@
 <template>
-  <div class="wrapper fade-inDown">
-    <div id="form-content">
+  <div class="wrapper fadeInDown">
+    <div class="form-content">
       <div class="fadeIn first">
         <img
-          src="@/assets/img/Login-Best-Pizza.png"
-          id="icon"
-          alt="User Icon"
+          src="../../assets/img/Login-Best-Pizza.png"
+          class="icon"
+          alt="logo Icon"
         />
       </div>
+      <div class="title">
+        <h2>Bienvenido</h2>
+      </div>
+      <div class="subtitle">
+        <span>A las mejores pizzas del país</span>
+      </div>
+      <!-- Login Form -->
+      <div class="input-container">
+        <input type="email" class="form-control" placeholder="Usuario" />
+      </div>
+      <div class="input-container">
+        <input type="password" class="form-control" placeholder="Contraseña" />
+      </div>
+      <div class="forget-password">
+        <h6 class="" href="#">¿Olvidate tu contraseña?</h6>
+      </div>
       <div>
-        <input
-          type="text"
-          id="login"
-          class="fadeIn second"
-          name="login"
-          placeholder="login"
-        />
-        <input
-          type="text"
-          id="password"
-          class="fadeIn third"
-          name="login"
-          placeholder="password"
-        />
-        <input type="submit" class="fadeIn fourth" value="Log In" />
+        <b-button variant="warning" class="form-control"
+          >Iniciar sesión</b-button
+        >
       </div>
     </div>
   </div>
@@ -34,44 +38,44 @@ export default {};
 </script>
 
 <style lang="scss">
-a {
-  color: #92badd;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 400;
+.forget-password {
+  padding: 20px;
+}
+.form-control {
+  height: 57px;
+}
+.input-container {
+  padding-bottom: 15px;
+}
+.title {
+  padding-top: 40px;
+}
+.subtitle {
+  padding-bottom: 15px;
 }
 
 h2 {
   text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
   display: inline-block;
-  margin: 40px 8px 10px 8px;
-  color: #cccccc;
+  color: #000000;
+}
+span {
+  text-align: center;
+  display: inline-block;
+  color: #707070;
 }
 
 .wrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
+  height: 100%;
+  padding-right: 40px;
 }
 
 .form-content {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
   background: #fff;
-  padding: 30px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-  padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
@@ -84,7 +88,7 @@ h2.active {
   border-bottom: 2px solid #5fbae9;
 }
 
-.fade-inDown {
+.fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-duration: 1s;
@@ -184,23 +188,31 @@ h2.active {
   animation-delay: 1s;
 }
 
-/* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
+*:focus {
+  outline: none;
 }
 
-.underlineHover:hover {
-  color: #0d0d0d;
+.icon {
+  width: 50%;
 }
-
-.underlineHover:hover:after {
-  width: 100%;
+@media only screen and (max-width: 900px) {
+  .icon {
+    width: 25%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .icon {
+    width: 15%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .icon {
+    width: 45%;
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .icon {
+    width: 50%;
+  }
 }
 </style>

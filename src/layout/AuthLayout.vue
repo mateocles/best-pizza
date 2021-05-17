@@ -1,24 +1,15 @@
 <template>
   <slide-y-up-transition mode="out-in" origin="center top">
-    <b-row class="login-page">
-      <b-col md="5" sm="5">
-        <Ilustration />
-      </b-col>
-      <b-col>
-        <router-view></router-view>
-      </b-col>
-    </b-row>
+    <router-view></router-view>
   </slide-y-up-transition>
 </template>
 <script>
 import { SlideYUpTransition } from "vue2-transitions";
-import Ilustration from "@/components/elements/ilustration/Ilustration";
 
 export default {
   name: "auth-layout",
   components: {
     SlideYUpTransition,
-    Ilustration,
   },
   data() {
     return {
@@ -30,11 +21,8 @@ export default {
 };
 </script>
 <style lang="scss">
-.login-page {
-  background: url("../assets/img/imagebkg.png") center no-repeat;
-  background-size: cover;
-  position: relative;
+.body {
   display: flex;
-  min-height: 100vh;
+  flex-direction: column;
 }
 </style>

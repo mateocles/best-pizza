@@ -23,7 +23,7 @@ const actions = {
       async (functions) => {
         const response = await functions;
         commit("loading", false);
-        commit("getUsersResponse", { response });
+        commit("getUserResponse", { response });
       },
       async (functions) => {
         const response = await functions;
@@ -43,7 +43,7 @@ const mutations = {
     state.loading.getItems = payload;
   },
   getUserResponse(state, data) {
-    state.User = data.response.data.results;
+    state.User = data.response.data.response.users;
   },
 };
 

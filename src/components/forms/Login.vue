@@ -16,10 +16,20 @@
       </div>
       <!-- Login Form -->
       <div class="input-container">
-        <input type="email" class="form-control" placeholder="Usuario" />
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Usuario"
+          v-model="userName"
+        />
       </div>
       <div class="input-container">
-        <input type="password" class="form-control" placeholder="Contraseña" />
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Contraseña"
+          v-model="password"
+        />
       </div>
       <div class="forget-password">
         <h6 class="" href="#">¿Olvidate tu contraseña?</h6>
@@ -34,7 +44,27 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  name: "Login",
+  data() {
+    return {
+      userName: "",
+      password: "",
+    };
+  },
+  created() {
+    this.getUsers();
+  },
+  methods: {
+    ...mapActions("User", ["getUsers"]),
+    login() {
+      if (this.userName != "" && this.password != "") {
+        console.log("ññ");
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss">

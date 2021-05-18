@@ -2,13 +2,17 @@ import Api from "../../common/Api/Api";
 import { setMessage } from "../../common/Utils/Message";
 
 const state = {
-  User: [],
+  Users: [],
+  User: {},
   loading: { getUser: false },
 };
 
 const getters = {
   User: (state) => {
-    return state.User;
+    return state.user;
+  },
+  Users: (state) => {
+    return state.Users;
   },
   loading: (state) => {
     return state.loading;
@@ -36,6 +40,9 @@ const actions = {
       }
     );
   },
+  setUser({ commit }, payload) {
+    commit("setUser", { payload });
+  },
 };
 
 const mutations = {
@@ -43,7 +50,10 @@ const mutations = {
     state.loading.getItems = payload;
   },
   getUserResponse(state, data) {
-    state.User = data.response.data.response.users;
+    state.Users = data.response.data.response.users;
+  },
+  setUser(state, data) {
+    state.User = data;
   },
 };
 

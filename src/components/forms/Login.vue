@@ -16,12 +16,12 @@
       </div>
       <!-- Login Form -->
       <div class="input-container">
-        <input
+        <b-form-input
           type="email"
           class="form-control"
           placeholder="Usuario"
           v-model="userName"
-        />
+        ></b-form-input>
       </div>
       <div class="input-container">
         <input
@@ -35,7 +35,7 @@
         <h6 class="" href="#">¿Olvidate tu contraseña?</h6>
       </div>
       <div>
-        <b-button variant="warning" class="form-control"
+        <b-button variant="warning" class="form-control" @click="login()"
           >Iniciar sesión</b-button
         >
       </div>
@@ -44,23 +44,46 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import { setMessage } from "../../common/Utils/Message";
+
 export default {
   name: "Login",
   data() {
     return {
       userName: "",
       password: "",
+      valid: false,
     };
   },
+  computed: { ...mapGetters("User", ["Users", "loading"]) },
   created() {
     this.getUsers();
   },
   methods: {
     ...mapActions("User", ["getUsers"]),
     login() {
+      this.valid = false;
       if (this.userName != "" && this.password != "") {
-        console.log("ññ");
+        this.Users.forEach((element) => {
+          if (
+            element.email == this.userName &&
+            element.password == this.password
+          ) {
+            this.valid = true;
+            localStorage.setItem("user", JSON.stringify(element));
+            this.$router.push({ path: "/home" }).catch(() => {});
+          }
+        });
+        if (!this.valid) {
+          this.$bvToast.toast("Por favor revisar los campos", {
+            title: `Correo y contraseña no coinciden`,
+            variant: "danger",
+            solid: true,
+          });
+        }
+      } else {
+        setMessage("Error", `Por favor revisar los campos`, "error");
       }
     },
   },

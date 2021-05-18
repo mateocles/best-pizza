@@ -41,7 +41,7 @@ const actions = {
     );
   },
   setUser({ commit }, payload) {
-    commit("setUser", { payload });
+    commit("setUser", payload);
   },
 };
 

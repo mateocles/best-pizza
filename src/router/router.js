@@ -9,7 +9,7 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: "/pizzashops",
+      path: "/",
       redirect: "home",
       component: HomeLayout,
       children: [

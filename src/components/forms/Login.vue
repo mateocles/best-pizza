@@ -16,12 +16,12 @@
       </div>
       <!-- Login Form -->
       <div class="input-container">
-        <b-form-input
+        <input
           type="email"
           class="form-control"
           placeholder="Usuario"
           v-model="userName"
-        ></b-form-input>
+        />
       </div>
       <div class="input-container">
         <input
@@ -48,7 +48,7 @@ import { mapActions, mapGetters } from "vuex";
 import { setMessage } from "../../common/Utils/Message";
 
 export default {
-  name: "Login",
+  name: "login-form",
   data() {
     return {
       userName: "",
@@ -90,7 +90,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .forget-password {
   padding: 20px;
 }

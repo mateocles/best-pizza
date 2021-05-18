@@ -7,22 +7,9 @@
 import { SlideYUpTransition } from "vue2-transitions";
 
 export default {
-  name: "auth-layout",
+  name: "Aauth-layout",
   components: {
     SlideYUpTransition,
   },
-  data() {
-    return {
-      year: new Date().getFullYear(),
-    };
-  },
-  computed: {},
-  mounted() {},
 };
 </script>
-<style lang="scss">
-.body {
-  display: flex;
-  flex-direction: column;
-}
-</style>

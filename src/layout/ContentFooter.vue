@@ -1,5 +1,5 @@
 <template>
-  <footer class="contend">
+  <footer class="contend footer">
     <b-row>
       <b-col md="8" sm="4" class="social-media">
         <img
@@ -25,6 +25,7 @@
 </template>
 <script>
 export default {
+  name: "content-footer",
   data() {
     return {
       year: new Date().getFullYear(),
@@ -51,5 +52,12 @@ export default {
 .logo-pizza {
   width: 40px;
   padding-top: 13px;
+}
+footer {
+  width: 100%;
+  height: 81px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 </style>

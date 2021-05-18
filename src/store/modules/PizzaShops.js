@@ -2,13 +2,13 @@ import Api from "../../common/Api/Api";
 import { setMessage } from "../../common/Utils/Message";
 
 const state = {
-  PizzaShops: [],
+  pizzaShops: [],
   loading: { getPizzaShops: false },
 };
 
 const getters = {
-  PizzaShops: (state) => {
-    return state.productsCart;
+  pizzaShops: (state) => {
+    return state.pizzaShops;
   },
   loading: (state) => {
     return state.loading;
@@ -16,7 +16,7 @@ const getters = {
 };
 
 const actions = {
-  getUsers({ commit }) {
+  getPizzaShops({ commit }) {
     commit("loading", true);
     Api.get(
       `/RH.json`,
@@ -43,7 +43,7 @@ const mutations = {
     state.loading.getItems = payload;
   },
   getPizzaShopsResponse(state, data) {
-    state.User = data.response.data.results;
+    state.pizzaShops = data.response.data.response.stores;
   },
 };
 

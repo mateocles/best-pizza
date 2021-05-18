@@ -28,9 +28,6 @@ export default {
   position: relative;
   min-height: 100vh;
 }
-.login-background {
-  background: #ffff;
-}
 @media only screen and (max-width: 900px) {
   .login-page {
     min-height: 100vh;

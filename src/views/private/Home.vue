@@ -7,7 +7,7 @@
       <b-col class="fadeInDown">
         <b-container fluid class="home-shops">
           <Search />
-          <PizzaShop />
+          <pizza-shop />
         </b-container>
         <content-footer class="footer"></content-footer>
       </b-col>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Search from "../../components/elements/search/search";
 import PizzaShop from "../../components/elements/pizzaShop/pizzaShop";
 import ContentFooter from "../../layout/ContentFooter";
@@ -28,6 +28,21 @@ export default {
     PizzaShop,
     ContentFooter,
     Ilustration,
+  },
+  computed: {
+    ...mapGetters("Pokemons", ["items", "allPokemons", "favoritePokemons"]),
+    searchPokemons() {
+      if (this.searchInput.length > 3) {
+        return this.searchPokemon(this.items, this.searchInput);
+      }
+      if (this.allPokemons) {
+        return this.items;
+      }
+      if (this.favoritePokemons) {
+        return this.searchFavoritePokemon(this.items);
+      }
+      return this.items;
+    },
   },
   created() {
     /* Se creo este codigo con el fin de que cuando la pagina realice un reload, recupe los datos del carrito en localstore */

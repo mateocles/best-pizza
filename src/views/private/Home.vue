@@ -7,7 +7,7 @@
       <b-col class="fadeInDown">
         <b-container fluid class="home-shops">
           <Search />
-          <pizza-shop />
+          <pizza-shop :item="searchpPizzaShops" />
         </b-container>
         <content-footer class="footer"></content-footer>
       </b-col>
@@ -29,19 +29,18 @@ export default {
     ContentFooter,
     Ilustration,
   },
+  data() {
+    return {
+      searchInput: "",
+    };
+  },
   computed: {
-    ...mapGetters("Pokemons", ["items", "allPokemons", "favoritePokemons"]),
-    searchPokemons() {
+    ...mapGetters("PizzaShops", ["pizzaShops"]),
+    searchpPizzaShops() {
       if (this.searchInput.length > 3) {
-        return this.searchPokemon(this.items, this.searchInput);
+        return this.searchPizzaShops(this.items, this.searchInput);
       }
-      if (this.allPokemons) {
-        return this.items;
-      }
-      if (this.favoritePokemons) {
-        return this.searchFavoritePokemon(this.items);
-      }
-      return this.items;
+      return this.pizzaShops;
     },
   },
   created() {
@@ -57,6 +56,11 @@ export default {
   methods: {
     ...mapActions("User", ["setUser"]),
     ...mapActions("PizzaShops", ["getPizzaShops"]),
+    searchPizzaShops(arrayToSearch, value) {
+      return arrayToSearch.filter(function (item) {
+        return item.name.toUpperCase().includes(value.toUpperCase());
+      });
+    },
   },
 };
 </script>
